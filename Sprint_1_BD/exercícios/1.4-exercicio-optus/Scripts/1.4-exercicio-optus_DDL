@@ -1,0 +1,70 @@
+Create Database OPTUS;
+Go
+
+Use OPTUS;
+Go
+
+Create Table Plataforma(
+idPlataforma Tinyint primary key identity(1,1),
+Nome_Plataforma Varchar(20) not null
+); 
+Go
+
+--Drop table Artista
+
+Create Table Artista(
+idArtista int primary key identity(1,1),
+Nome_Artista Varchar(20) not null
+); 
+Go
+
+Create Table Estilo_Musical(
+idEstilo smallint primary key identity(1,1),
+Nome_Estilo Varchar(20) not null
+); 
+Go
+
+Create Table Ativação_Album(
+idAtivação Tinyint primary key identity(1,1),
+Situação Varchar(20) not null
+); 
+Go
+
+Create Table Permissão_Usuario(
+idPermissão Tinyint primary key identity(1,1),
+Tipo_Permissão Varchar(20) not null
+); 
+Go
+
+Create Table Usuario(
+idUsuario bigint primary key identity(1,1),
+idPermissão Tinyint Foreign Key references Permissão_Usuario(idPermissão), 
+Nome_Usuario Varchar(20) not null
+); 
+Go
+--Drop table Album
+Create Table Album(
+idAlbum bigint primary key identity(1,1),
+idArtista int Foreign Key references Artista(idArtista), 
+idAtivação Tinyint Foreign Key references Ativação_Album(idAtivação),
+Nome_Album Varchar(30) not null,
+Data_Lançamento Varchar(10) not null,
+Quant_min Varchar(8) not null
+); 
+Go
+
+--Drop table Estilo_do_Album
+Create Table Estilo_do_Album(
+idEstiloAlbum int primary key identity(1,1),
+idAlbum bigint Foreign Key references Album(idAlbum), 
+idEstilo smallint Foreign Key references Estilo_Musical(idEstilo),
+); 
+Go
+
+Create Table Dados_de_Acesso(
+idDados bigint primary key identity(1,1),
+idUsuario bigint Foreign Key references Usuario(idUsuario), 
+End_Email Varchar(256) not null,
+Senha Varchar(20) not null 
+); 
+Go
