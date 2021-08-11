@@ -2,7 +2,6 @@
 Use SENAI_HROADS_TARDE;
 Go
 
-
 -- Selecionar todos os personagens
 select * from Personagem
 
