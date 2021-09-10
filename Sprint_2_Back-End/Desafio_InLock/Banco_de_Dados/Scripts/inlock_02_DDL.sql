@@ -8,7 +8,7 @@ Create table Estudios(
 idEstudio Smallint primary key identity,
 nomeEstudio varchar(50) not null
 );
-Drop table Jogos
+
 Create Table Jogos(
 idJogo int primary key identity,
 nomeJogo varchar(100) not null,
